@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineLibraryProject.Web.Models;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
@@ -8,10 +9,23 @@ namespace OnlineLibraryProject.Web.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Login()
         {
+           
             return View();
         }
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(model);
+            }
+            return View(model); 
+        }
+
+
         public IActionResult Register()
         {
             return View();
