@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookLibrary.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineLibraryProject.Web.Models;
 using System.Diagnostics;
 
@@ -6,16 +8,18 @@ namespace OnlineLibraryProject.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly BookDataContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BookDataContext context)
         {
-            _logger = logger;
+            this.context = context;
+this.context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var Books=this.context.Books.Include("Writers").ToList();
+            return View(Books);
         }
 
         public IActionResult Privacy()

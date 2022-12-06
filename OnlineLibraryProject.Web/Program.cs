@@ -1,7 +1,12 @@
+using BookLibrary.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<BookDataContext>(o => o.UseNpgsql(builder.Configuration.GetConnectionString("BookDb")));
+
 
 var app = builder.Build();
 
