@@ -7,6 +7,11 @@ namespace OnlineLibraryProject.Web.Models
         [Required]
         [Compare(nameof(Password))]
        
-        public String RePassword { get; set; }
+        public string RePassword { get; set; }
+        public string FullName { get; set; }
+
+        public string Address { get; set; }
+
+
     }
 }

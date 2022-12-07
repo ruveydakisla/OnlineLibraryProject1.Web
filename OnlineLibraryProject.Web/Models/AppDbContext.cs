@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OnlineLibraryProject.Web.Entities;
 
 namespace OnlineLibraryProject.Web.Models
 {
@@ -10,6 +11,7 @@ namespace OnlineLibraryProject.Web.Models
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Writer> Writers { get; set; }
+        public DbSet<Users> Users { get; set; } 
 
 
 
