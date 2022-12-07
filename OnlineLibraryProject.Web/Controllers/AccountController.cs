@@ -12,11 +12,11 @@ namespace OnlineLibraryProject.Web.Controllers
     public class AccountController : Controller
     {
         private readonly AppDbContext _Context;
-        private readonly IConfiguration _configuration;
-        public AccountController(AppDbContext dataBaseContext, IConfiguration configuration)
+        
+        public AccountController(AppDbContext dataBaseContext)
         {
             this._Context = dataBaseContext;
-            this._configuration = configuration;
+           
         }
 
 
@@ -29,7 +29,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
                 Users user = _Context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == EncryptWithMD5(model.Password));
 
-                List<Claim> claims = new List<Claim>() {
+                    List<Claim> claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, model.UserName),
                     new Claim("OtherProperties","Example Role")
 
