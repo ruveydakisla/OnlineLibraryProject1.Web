@@ -4,6 +4,7 @@ namespace OnlineLibraryProject.Web.Models
 {
     public class LoginViewModel
     {
+       
 
         [Required(ErrorMessage = "Username is required.")]
         [StringLength(30, ErrorMessage = "Username can be max 30 characters.")]
@@ -13,5 +14,6 @@ namespace OnlineLibraryProject.Web.Models
         [MinLength(6, ErrorMessage = "Password can be min 6 characters.")]
         [MaxLength(8, ErrorMessage = "Password can be max 8 characters.")]
         public string Password { get; set; }
+        public bool KeepLoggedIn { get; set; }
     }
 }

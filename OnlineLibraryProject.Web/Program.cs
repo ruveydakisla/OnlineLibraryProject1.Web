@@ -1,11 +1,26 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddSession();
+
+
+
+
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option => {
+        option.Cookie.Name = "OnlineLibrary.Auth";
+        option.LoginPath = "/Account/Login";
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        option.SlidingExpiration = false; 
+        option.LogoutPath= null;
+        option.AccessDeniedPath = null;
+
+    });
 var app = builder.Build();
 app.UseSession();
-
 
 
 // Configure the HTTP request pipeline.
@@ -20,6 +35,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
+
 
 app.UseAuthorization();
 
