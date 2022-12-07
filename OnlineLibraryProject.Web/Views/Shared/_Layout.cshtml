@@ -3,49 +3,58 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @*<title>@ViewData["Title"] - OnlineLibraryProject.Web</title>*@
-    <title> OnlineLibraryProject.Web</title>
-
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - OnlineLibraryProject.Web</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnlineLibraryProject.Web.styles.css" asp-append-version="true" />
+    <link href="~/css/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+	<link href="~/css/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<a href="~/css/assets/vendor/bootstrap/css/bootstrap.min.css.map">~/css/assets/vendor/bootstrap/css/bootstrap.min.css.map</a>
+	<link href="~/css/assets/vendor/glightbox/css/glightbox.css" rel="stylesheet" />
+	<link href="~/css/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="~/css/assets/vendor/aos/aos.css" rel="stylesheet" />
+
+
 </head>
 <body>
-        <<header id="header" class="header d-flex align-items-center fixed-top">
-            <div class="container-fluid d-flex align-items-center justify-content-between">
-
-                <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
-                    <i class="bi bi-camera"></i>
-                    <h1>PhotoFolio</h1>
-                </a>
-
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li class="dropdown">
-                            <a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                            <ul>
-                                <li><a href="gallery.html">Nature</a></li>
-                                <li><a href="gallery.html">People</a></li>
-                                <li><a href="gallery.html">Architecture</a></li>
-                                <li><a href="gallery.html">Animals</a></li>
-                                <li><a href="gallery.html">Sports</a></li>
-                                <li><a href="gallery.html">Travel</a></li>
-                                <li class="dropdown">
-                                    <a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                                    <ul>
-                                        <li><a href="#">Sub Menu 1</a></li>
-                                        <li><a href="#">Sub Menu 2</a></li>
-                                        <li><a href="#">Sub Menu 3</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-book me-2"></i>ONLIB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav><!-- .navbar -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Deneme">Deneme</a>
+                
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">Log Out</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        }
 
                 <div class="header-social-links">
                     <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
