@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using OnlineLibraryProject.Web.Entities;
 using NETCore.Encrypt.Extensions;
+using Microsoft.AspNetCore.Authorization;
 //using AuthProject.Models;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly AppDbContext _Context;
@@ -21,6 +23,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
 
         [HttpPost]
+        [AllowAnonymous]
         public  async Task<IActionResult> Login(LoginViewModel model)
         {
             
@@ -54,6 +57,8 @@ namespace OnlineLibraryProject.Web.Controllers
             ViewData["ValidateMessage"] = "user not found";
             return View();
         }
+        [AllowAnonymous]
+
         public IActionResult Login() {
             ClaimsPrincipal claimUser = HttpContext.User;
 
@@ -66,6 +71,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Register(RegisterViewModel model)
         {
             if (_Context.Users.Any(x => x.UserName.ToLower() == model.UserName.ToLower()))
@@ -92,11 +98,12 @@ namespace OnlineLibraryProject.Web.Controllers
             
             return View(model);
         }
-
+        [AllowAnonymous]
         public IActionResult Register() 
         {
             return View();
         }
+        [Authorize]
         public IActionResult Profile()
         {
            
@@ -106,7 +113,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
         
 
-            public async Task<IActionResult> LogOut()
+        public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
