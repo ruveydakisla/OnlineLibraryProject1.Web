@@ -1,12 +1,14 @@
-﻿namespace OnlineLibraryProject.Web.Models
+﻿using OnlineLibraryProject.Web.Entities;
+
+namespace OnlineLibraryProject.Web.Models
 {
     public class BookRepository
     {
         private static List<Book> _books = new List<Book>()
         {
-            new (){Id=1,Name="Ömerin Suçu NE",Stock=100,Year=2012,PageNumber=44},
-            new (){Id=2,Name="Sql hate You *:(",Stock=200,Year=2009,PageNumber=44},
-            new (){Id=1,Name="Ömerin çilesi",Stock=999,Year=2022,PageNumber=44}
+            new (){Id=1,Name="Ömerin Suçu NE",Stock=100,Year=2012},
+            new (){Id=2,Name="Sql hate You *:(",Stock=200,Year=2009},
+            new (){Id=1,Name="Ömerin çilesi",Stock=999,Year=2022}
 
         };
         public List<Book> GetAll() => _books;

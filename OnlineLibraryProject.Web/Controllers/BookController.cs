@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineLibraryProject.Web.Entities;
 using OnlineLibraryProject.Web.Models;
 
 namespace OnlineLibraryProject.Web.Controllers

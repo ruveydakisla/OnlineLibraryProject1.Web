@@ -3,12 +3,19 @@ using OnlineLibraryProject.Web.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using OnlineLibraryProject.Web.Entities;
 //using AuthProject.Models;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
     public class AccountController : Controller
     {
+        private AppDbContext _Context;
+
+        public AccountController(AppDbContext context)
+        {
+            _Context = context;
+        }
 
 
         [HttpPost]
@@ -58,9 +65,19 @@ namespace OnlineLibraryProject.Web.Controllers
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Login));
+                Users user = new()
+                {
+                    Password = model.Password,
+                    UserName = model.UserName,
+                    Address= model.Address,
+                    NameSurname=model.NameSurname
+                };
+                _Context.Users.Add(user);
+
+                _Context.SaveChanges();
+               
             }
             return View(model);
         }
