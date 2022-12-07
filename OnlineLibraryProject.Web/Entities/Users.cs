@@ -22,6 +22,8 @@ namespace OnlineLibraryProject.Web.Entities
             [Required]
             [StringLength( 300)]
             public string Address { get; set; }
+            [Required]
+            public string Role { get; set; } = "user";
 
 
 

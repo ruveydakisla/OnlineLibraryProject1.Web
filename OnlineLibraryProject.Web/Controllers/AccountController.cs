@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using OnlineLibraryProject.Web.Entities;
 using NETCore.Encrypt.Extensions;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
 //using AuthProject.Models;
 
 namespace OnlineLibraryProject.Web.Controllers
@@ -32,26 +33,21 @@ namespace OnlineLibraryProject.Web.Controllers
 
                 Users user = _Context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == EncryptWithMD5(model.Password));
 
-                    List<Claim> claims = new List<Claim>() {
-                    new Claim(ClaimTypes.NameIdentifier, model.UserName),
-                    new Claim("OtherProperties","Example Role")
+                List<Claim> claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+                claims.Add(new Claim(ClaimTypes.Name, user.NameSurname ?? string.Empty));
+                claims.Add(new Claim(ClaimTypes.Role, user.Role));
+                claims.Add(new Claim("UserName", user.UserName));
 
-                };
+                ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims,
-                    CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
-                AuthenticationProperties properties = new AuthenticationProperties()
-                {
-
-                    AllowRefresh = true,
-                    IsPersistent = model.KeepLoggedIn
-                };
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity), properties);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                 return RedirectToAction("Index", "Home");
+
+                
 
             }
             ViewData["ValidateMessage"] = "user not found";
@@ -110,8 +106,53 @@ namespace OnlineLibraryProject.Web.Controllers
 
             return View();
         }
+        private void ProfileInfoLoader()
+        {
+            Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            Users user = _Context.Users.SingleOrDefault(x => x.Id == userid);
 
-        
+            ViewData["FullName"] = user.NameSurname;
+        }
+
+        [HttpPost]
+        public IActionResult ProfileChangeFullName([Required][StringLength(50)] string? fullname)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                Users user = _Context.Users.SingleOrDefault(x => x.Id == userid);
+
+                user.NameSurname = fullname;
+                _Context.SaveChanges();
+
+                return RedirectToAction(nameof(Profile));
+            }
+
+            ProfileInfoLoader();
+            return View("Profile");
+        }
+
+        [HttpPost]
+        public IActionResult ProfileChangePassword([Required][MinLength(6)][MaxLength(16)] string? password)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                Users user = _Context.Users.SingleOrDefault(x => x.Id == userid);
+
+                string hashedPassword = EncryptWithMD5(password);
+
+                user.Password = hashedPassword;
+                _Context.SaveChanges();
+
+                ViewData["result"] = "PasswordChanged";
+            }
+
+            ProfileInfoLoader();
+            return View("Profile");
+        }
+
+
 
         public async Task<IActionResult> LogOut()
         {

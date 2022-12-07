@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
-    [Authorize] 
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -16,16 +16,22 @@ namespace OnlineLibraryProject.Web.Controllers
         {
             _logger = logger;
         }
-       
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             return View();
         }
+
         public IActionResult Privacy()
         {
             return View();
         }
        
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -15,12 +15,12 @@ builder.Services.AddSession();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option => {
-        option.Cookie.Name = "OnlineLibrary.Auth";
+        option.Cookie.Name = ".WebApplication2.auth";
+        option.ExpireTimeSpan = TimeSpan.FromDays(7);
+        option.SlidingExpiration = false;
         option.LoginPath = "/Account/Login";
-        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-        option.SlidingExpiration = false; 
-        option.LogoutPath= null;
-        option.AccessDeniedPath = null;
+        option.LogoutPath = "/Account/Logout";
+        option.AccessDeniedPath = "/Home/AccessDenied";
 
     });
 builder.Services.AddControllersWithViews();
