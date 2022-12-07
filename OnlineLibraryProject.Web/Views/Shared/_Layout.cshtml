@@ -4,15 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OnlineLibraryProject.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnlineLibraryProject.Web.styles.css" asp-append-version="true" />
+    <link href="~/css/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+	<link href="~/css/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<a href="~/css/assets/vendor/bootstrap/css/bootstrap.min.css.map">~/css/assets/vendor/bootstrap/css/bootstrap.min.css.map</a>
+	<link href="~/css/assets/vendor/glightbox/css/glightbox.css" rel="stylesheet" />
+	<link href="~/css/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+    <link href="~/css/assets/vendor/aos/aos.css" rel="stylesheet" />
+
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineLibraryProject.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-book me-2"></i>ONLIB</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,7 +34,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Deneme">Deneme</a>
+                
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item ms-auto">
