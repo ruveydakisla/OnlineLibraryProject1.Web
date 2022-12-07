@@ -8,7 +8,7 @@ namespace OnlineLibraryProject.Web.Models
         [Compare(nameof(Password))]
        
         public string RePassword { get; set; }
-        public string FullName { get; set; }
+        public string NameSurname { get; set; }
 
         public string Address { get; set; }
 
