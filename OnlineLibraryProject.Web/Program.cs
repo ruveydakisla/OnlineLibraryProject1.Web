@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using OnlineLibraryProject.Web.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,8 +23,22 @@ builder.Services.AddAuthentication(
         option.AccessDeniedPath = null;
 
     });
+builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddDbContext<AppDbContext>(Options =>
+{
+    Options.UseNpgsql(builder.Configuration.GetConnectionString("BooksDb"));
+});
+
+
+
+
+
+
 var app = builder.Build();
-app.UseSession();
+
+
 
 
 // Configure the HTTP request pipeline.
