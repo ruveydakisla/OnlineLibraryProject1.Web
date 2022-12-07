@@ -4,27 +4,30 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using OnlineLibraryProject.Web.Entities;
+using NETCore.Encrypt.Extensions;
 //using AuthProject.Models;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private AppDbContext _Context;
-
-        public AccountController(AppDbContext context)
+        private readonly AppDbContext _Context;
+        private readonly IConfiguration _configuration;
+        public AccountController(AppDbContext dataBaseContext, IConfiguration configuration)
         {
-            _Context = context;
+            this._Context = dataBaseContext;
+            this._configuration = configuration;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public  async Task<IActionResult> Login(LoginViewModel model)
         {
-
-            if (model.UserName == "user" &&
-                 model.Password == "123456"
-                 )
+            
+            if (ModelState.IsValid )
             {
+
+                Users user = _Context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == EncryptWithMD5(model.Password));
+
                 List<Claim> claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, model.UserName),
                     new Claim("OtherProperties","Example Role")
@@ -64,11 +67,18 @@ namespace OnlineLibraryProject.Web.Controllers
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
+            if (_Context.Users.Any(x => x.UserName.ToLower() == model.UserName.ToLower()))
+            {
+                ModelState.AddModelError(nameof(model.UserName), "Username is already exist.");
+                return View(model);
+
+            }
+
             if (ModelState.IsValid)
             {
                 Users user = new()
                 {
-                    Password = model.Password,
+                    Password = EncryptWithMD5(model.Password),
                     UserName = model.UserName,
                     Address= model.Address,
                     NameSurname=model.NameSurname
@@ -99,6 +109,16 @@ namespace OnlineLibraryProject.Web.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
         }
+
+        public string EncryptWithMD5(string password)
+        {
+            string md5salt = "911892D7";
+            string saltedPassword = md5salt + password;
+            string hashedPassword = saltedPassword.MD5();
+            return hashedPassword;
+        }
+
+       
 
 
     }
