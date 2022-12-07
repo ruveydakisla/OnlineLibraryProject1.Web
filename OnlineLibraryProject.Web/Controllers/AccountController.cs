@@ -19,6 +19,7 @@ namespace OnlineLibraryProject.Web.Controllers
             this._configuration = configuration;
         }
 
+
         [HttpPost]
         public  async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -88,6 +89,7 @@ namespace OnlineLibraryProject.Web.Controllers
                 _Context.SaveChanges();
                
             }
+            
             return View(model);
         }
 
