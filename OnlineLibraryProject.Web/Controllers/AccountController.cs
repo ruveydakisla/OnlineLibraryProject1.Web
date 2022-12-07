@@ -10,8 +10,12 @@ namespace OnlineLibraryProject.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private AppDbContext _Context; 
+        private AppDbContext _Context;
 
+        public AccountController(AppDbContext context)
+        {
+            _Context = context;
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)

@@ -17,7 +17,8 @@ namespace OnlineLibraryProject.Web.Entities
             [Required]
             [StringLength(100)]
             public string Password { get; set; }
-            public bool Locked { get; set; } = false;
+
+            
             [Required]
             [StringLength( 300)]
             public string Address { get; set; }
