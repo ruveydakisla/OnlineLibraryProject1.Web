@@ -13,9 +13,9 @@ namespace OnlineLibraryProject.Web.Controllers
             _context = context;
             if (!_context.Books.Any())
             {
-                _context.Books.Add(new Book() { Name = "Kalem 1", Stock = 100, Year = 2001 });
-                _context.Books.Add(new Book() { Name = "Kalem 2", Stock = 200, Year = 2001 });
-                _context.Books.Add(new Book() { Name = "Kalem 3", Stock = 300, Year = 2001 });
+                _context.Books.Add(new Book() { Name = "Kalem 1", Stock = 100, Year = 2001 ,PageNumber = 44 });
+                _context.Books.Add(new Book() { Name = "Kalem 2", Stock = 200, Year = 2001 ,PageNumber = 44 });
+                _context.Books.Add(new Book() { Name = "Kalem 3", Stock = 300, Year = 2001 ,PageNumber=44});
 
                 _context.SaveChanges();
             }
