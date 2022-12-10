@@ -1,7 +1,9 @@
+using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using OnlineLibraryProject.Web.Models;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,12 +26,13 @@ builder.Services.AddAuthentication(
 
     });
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Context>();
 
 
-builder.Services.AddDbContext<AppDbContext>(Options =>
-{
-    Options.UseNpgsql(builder.Configuration.GetConnectionString("BooksDb"));
-});
+//builder.Services.AddDbContext<AppDbContext>(Options =>
+//{
+//    Options.UseNpgsql(builder.Configuration.GetConnectionString("BooksDb"));
+//});
 
 
 

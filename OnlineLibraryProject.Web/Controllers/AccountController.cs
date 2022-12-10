@@ -3,43 +3,49 @@ using OnlineLibraryProject.Web.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using OnlineLibraryProject.Web.Entities;
 using NETCore.Encrypt.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
-//using AuthProject.Models;
+using BussinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
+using DataAccessLayer.Concrete;
+using System;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly AppDbContext _Context;
-        
-        public AccountController(AppDbContext dataBaseContext)
+        UserManager um=new UserManager(new EfUserRepository());
+        private readonly Context _context;
+
+        public AccountController(Context dataBaseContext)
         {
-            this._Context = dataBaseContext;
+            this._context = dataBaseContext;
            
         }
-
+        
 
         [HttpPost]
         [AllowAnonymous]
         public  IActionResult Login(LoginViewModel model)
         {
-
+            //var values = um.GetAllUsers();
+            //return View (values);
             if (ModelState.IsValid)
             {
                 string hashedPassword = EncryptWithMD5(model.Password);
 
-                Users user = _Context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == hashedPassword);
+                User user = _context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == hashedPassword);
 
                 if (user != null)
                 {
-                    
+
 
                     List<Claim> claims = new List<Claim>();
-                    claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()));
                     claims.Add(new Claim(ClaimTypes.Name, user.NameSurname ?? string.Empty));
                     claims.Add(new Claim(ClaimTypes.Role, user.Role));
                     claims.Add(new Claim("Username", user.UserName));
@@ -77,7 +83,7 @@ namespace OnlineLibraryProject.Web.Controllers
         [AllowAnonymous]
         public IActionResult Register(RegisterViewModel model)
         {
-            if (_Context.Users.Any(x => x.UserName.ToLower() == model.UserName.ToLower()))
+            if (_context.Users.Any(x => x.UserName.ToLower() == model.UserName.ToLower()))
             {
                 ModelState.AddModelError(nameof(model.UserName), "Username is already exist.");
                 return View(model);
@@ -86,19 +92,19 @@ namespace OnlineLibraryProject.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                Users user = new()
+                User user = new()
                 {
                     Password = EncryptWithMD5(model.Password),
                     UserName = model.UserName,
-                    Address= model.Address,
-                    NameSurname=model.NameSurname
+                    Address = model.Address,
+                    NameSurname = model.NameSurname
                 };
-                _Context.Users.Add(user);
+                _context.Users.Add(user);
 
-                _Context.SaveChanges();
-               
+                _context.SaveChanges();
+
             }
-            
+
             return View(model);
         }
         [AllowAnonymous]
@@ -116,7 +122,7 @@ namespace OnlineLibraryProject.Web.Controllers
         private void ProfileInfoLoader()
         {
             Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            Users user = _Context.Users.SingleOrDefault(x => x.Id == userid);
+            User user = _context.Users.SingleOrDefault(x => x.UserID == userid);
 
             ViewData["FullName"] = user.NameSurname;
         }
@@ -127,10 +133,10 @@ namespace OnlineLibraryProject.Web.Controllers
             if (ModelState.IsValid)
             {
                 Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                Users user = _Context.Users.SingleOrDefault(x => x.Id == userid);
+                User user = _context.Users.SingleOrDefault(x => x.UserID == userid);
 
                 user.NameSurname = fullname;
-                _Context.SaveChanges();
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Profile));
             }
@@ -145,12 +151,12 @@ namespace OnlineLibraryProject.Web.Controllers
             if (ModelState.IsValid)
             {
                 Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                Users user = _Context.Users.SingleOrDefault(x => x.Id == userid);
+                User user = _context.Users.SingleOrDefault(x => x.UserID == userid);
 
                 string hashedPassword = EncryptWithMD5(password);
 
                 user.Password = hashedPassword;
-                _Context.SaveChanges();
+                _context.SaveChanges();
 
                 ViewData["result"] = "PasswordChanged";
             }
