@@ -25,32 +25,39 @@ namespace OnlineLibraryProject.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public  async Task<IActionResult> Login(LoginViewModel model)
+        public  IActionResult Login(LoginViewModel model)
         {
-            
-            if (ModelState.IsValid )
+
+            if (ModelState.IsValid)
             {
+                string hashedPassword = EncryptWithMD5(model.Password);
 
-                Users user = _Context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == EncryptWithMD5(model.Password));
+                Users user = _Context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == hashedPassword);
 
-                List<Claim> claims = new List<Claim>();
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
-                claims.Add(new Claim(ClaimTypes.Name, user.NameSurname ?? string.Empty));
-                claims.Add(new Claim(ClaimTypes.Role, user.Role));
-                claims.Add(new Claim("UserName", user.UserName));
+                if (user != null)
+                {
+                    
 
-                ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    List<Claim> claims = new List<Claim>();
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+                    claims.Add(new Claim(ClaimTypes.Name, user.NameSurname ?? string.Empty));
+                    claims.Add(new Claim(ClaimTypes.Role, user.Role));
+                    claims.Add(new Claim("Username", user.UserName));
 
-                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
-                return RedirectToAction("Index", "Home");
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                
-
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Username or password is incorrect.");
+                }
             }
-            ViewData["ValidateMessage"] = "user not found";
+
             return View();
         }
         [AllowAnonymous]
