@@ -1,8 +1,8 @@
-﻿@*@using OnlineLibraryProject.Web.Entities;*@
+﻿@using EntityLayer.Concrete
 @{
     ViewData["Title"] = "Index";
 }
-@*@model List<Book>*@
+@model List<Book>
 
 <h1>Ürünler</h1>
 
@@ -27,19 +27,19 @@
         </tr>
     </thead>
     <tbody>
-       @* @foreach (var item in Model)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Id</td>
+                <td>@item.BookID</td>
                 <td>@item.Name</td>
                 <td>@item.Stock</td>
-                <td>@item.Year</td>
+                <td>@item.PageNumber</td>
 
                 <td>
-                    <a asp-controller="Book" asp-action="remove" asp-route-id="@item.Id">Sil</a>
-                    <a asp-controller="Book" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
+                    <a asp-controller="Book" asp-action="remove" asp-route-id="@item.BookID">Sil</a>
+                    <a asp-controller="Book" asp-action="update" asp-route-id="@item.BookID">Güncelle</a>
                 </td>
             </tr>
-        }*@
+        }
     </tbody>
 </table>
