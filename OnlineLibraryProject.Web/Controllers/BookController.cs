@@ -1,51 +1,49 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BussinessLayer.Concrete;
+using DataAccessLayer.Abstact;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
 
 using OnlineLibraryProject.Web.Models;
+using System.Collections.Generic;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
     public class BookController : Controller
     {
-        //private context _context;
-        private readonly BookRepository _bookRepository;
-        public BookController(/*AppDbContext context*/)
+        private Context _context;
+        BookManager bm = new BookManager(new EfBookRepository());
+        public BookController(Context context)
         {
-            _bookRepository = new BookRepository();
-            //_context = context;
-            //if (!_context.Books.Any())
-            //{
-            //    _context.Books.Add(new Book() { Name = "Kalem 1", Stock = 100, Year = 2001 ,PageNumber = 44 });
-            //    _context.Books.Add(new Book() { Name = "Kalem 2", Stock = 200, Year = 2001 ,PageNumber = 44 });
-            //    _context.Books.Add(new Book() { Name = "Kalem 3", Stock = 300, Year = 2001 ,PageNumber=44});
-
-            //    _context.SaveChanges();
-            //}
-
+            this._context = context;
         }
 
         public IActionResult Index()
         {
-            // var books = _context.Books.ToList();
-            return View(/*books*/);
+            //var values = um.GetAllUsers();
+            //return View (values);
+            var book = bm.GetAllBooks();
+            return View(book);
         }
         public IActionResult Remove(int id)
         {
-            //var product = _context.Books.Find(id);
-            //_context.SaveChanges();
+            var book = bm.GetById(id);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult Update(int id)
         {
-            //var books = _context.Books.Find(id);
-            return View(/*books*/);
+            var book = bm.GetById(id);
+            return View(book);
         }
         [HttpPost]
-        public IActionResult Update(/*Book updateBook,int bookId,string type*/)
+        public IActionResult Update(Book updateBook,int bookId,string type)
         {
-            //updateBook.Id= bookId;  
-            //_context.Books.Update(updateBook);
-            //_context.SaveChanges();
+            updateBook.BookID= bookId;  
+            bm.BookUpdate(updateBook);
+            _context.SaveChanges();
 
             TempData["status"] = "Ürün Başarıyla güncellendi";
             return RedirectToAction("index");
@@ -55,13 +53,13 @@ namespace OnlineLibraryProject.Web.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //public IActionResult Add(/*Book newBook*/)
-        //{
-        //    //_context.Books.Add(newBook);
-        //    //_context.SaveChanges();
-        //    //TempData["status"] = "Ürün Başarıyla Eklendi";
-        //    return RedirectToAction("index");
-        //}
+        [HttpPost]
+        public IActionResult Add(Book newBook)
+        {
+            bm.BookAdd(newBook);
+            _context.SaveChanges();
+            TempData["status"] = "Ürün Başarıyla Eklendi";
+            return RedirectToAction("index");
+        }
     } 
 }

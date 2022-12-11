@@ -1,0 +1,26 @@
+﻿@using EntityLayer.Concrete;
+
+@{
+    ViewData["Title"] = "Update";
+}
+@model Book
+<h1>Kitap Güncelleme</h1>
+<form asp-controller="Book" asp-action="Update" asp-route-productId="@Model.BookID" asp-route-type="type1" method="post">
+    <label>Kitap ismi:</label>
+    <input type="hidden" asp-for="BookID" />
+    <input type="text" asp-for="Name" />
+    <br />
+    <label>Kitap Adeti:</label>
+    <input type="text" asp-for="Stock" />
+    <br />
+    <label>Kitap Basım Yılı:</label>
+    <input type="text" asp-for="Year" />
+    <br />
+    <label>Sayfa Sayısı:</label>
+    <input type="text" asp-for="PageNumber" />
+
+    <button type="submit">Ürün Güncelle</button>
+</form>
+
+
+
