@@ -1,7 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Login";
+﻿
+<!DOCTYPE html>
+<html lang="en">
 
-}
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -28,64 +28,66 @@
 
     <!-- Template Main CSS File -->
     <link href="~/PhotoFolio/assets/css/main.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: PhotoFolio - v1.1.1
+    * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
+
 <body>
+
     @await Html.PartialAsync("HpHeaderPartial")
 
     <main id="main" data-aos="fade" data-aos-delay="1500">
+
+        <!-- ======= End Page Header ======= -->
         <div class="page-header d-flex align-items-center">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6 text-center">
+                        <h2>Nature (16 images)</h2>
+                        <p>Bazen balık kendini asar , Sen tuttum sanarsın.</p>
+
+                        <a class="cta-btn" href="contact.html">Available for hire</a>
+
                     </div>
                 </div>
             </div>
         </div><!-- End Page Header -->
-        @model LoginViewModel
-        <div class="row ">
-            <div class="col col-4 offset-4">
-                <h1 class="display-4 border-bottom text-center pb-2 border-2 ">@ViewData["Title"]</h1>
-            </div>
-        </div>
-        <div class="row">
-            <a href="c:\users\theku\source\repos\iwpbookproject\onlinelibraryproject.web\views\account\login.cshtml"></a>
-            <div class="col-4 offset-4">
-                <form asp-controller="Account" asp-action="Login" method="post">
-                    <div class="form-group mb-3">
-                        <label asp-for="UserName" class="form-label ">Username</label>
-                        <input asp-for="UserName" placeholder="johndoe" class="form-control" />
-                        <span asp-validation-for="UserName" class="text-danger small"></span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label asp-for="Password" class="form-label ">Password</label>
-                        <input asp-for="Password" placeholder="johndoe" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger small"></span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="form-check-label" asp-for="KeepLoggedIn">Keep Logged In</label>
-                        <input class="form-check-input" type="checkbox" name="name" asp-for="KeepLoggedIn" />
-                    </div>
-                    <div class="form-group d-grid mb-3 ">
-                        <button type="submit" class="btn btn-success d-block">Login</button>
-                    </div>
-                    @if (ViewData["ValidateMessage"] != null)
-                    {
-                        <br />
-                        <br />
-                        <label class="text-danger">@ViewData["ValidateMessage"]</label>
-                    }
+        <!-- ======= Gallery Section ======= -->
+        <section id="gallery" class="gallery">
+            <div class="container-fluid">
+
+                <div class="row gy-4 justify-content-center">
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="~/PhotoFolio/assets/img/gallery/books.jpg" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a href="~/PhotoFolio/assets/img/gallery/books.jpg" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- End Gallery Item -->
 
 
-                </form>
+                </div>
+
             </div>
-        </div>
-    </main>
+        </section><!-- End Gallery Section -->
+
+    </main><!-- End #main -->
+    @await Html.PartialAsync("FooterPartial")
+
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <div id="preloader">
         <div class="line"></div>
     </div>
 
+    <!-- Vendor JS Files -->
     <script src="~/PhotoFolio/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/PhotoFolio/assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="~/PhotoFolio/assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -95,8 +97,7 @@
     <!-- Template Main JS File -->
     <script src="~/PhotoFolio/assets/js/main.js"></script>
 
-
 </body>
 
-
-
+</html>
+@RenderBody()
