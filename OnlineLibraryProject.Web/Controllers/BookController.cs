@@ -29,7 +29,7 @@ namespace OnlineLibraryProject.Web.Controllers
         public IActionResult Remove(int id)
         {
             var book = bm.GetById(id);
-            _context.SaveChanges();
+            bm.BookRemove(book);
             return RedirectToAction("Index");
         }
         [HttpGet]
@@ -43,7 +43,6 @@ namespace OnlineLibraryProject.Web.Controllers
         {
             updateBook.BookID= bookId;  
             bm.BookUpdate(updateBook);
-            _context.SaveChanges();
 
             TempData["status"] = "Ürün Başarıyla güncellendi";
             return RedirectToAction("index");
@@ -57,7 +56,6 @@ namespace OnlineLibraryProject.Web.Controllers
         public IActionResult Add(Book newBook)
         {
             bm.BookAdd(newBook);
-            _context.SaveChanges();
             TempData["status"] = "Ürün Başarıyla Eklendi";
             return RedirectToAction("index");
         }
