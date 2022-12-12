@@ -1,0 +1,17 @@
+﻿@using EntityLayer.Concrete
+@{
+    ViewData["Title"] = "BookShow";
+}
+@model Book
+<form asp-controller="User" asp-action="" asp-route-productId="@Model.BookID" asp-route-type="type1" method="post">
+</form>
+@*@foreach (var item in Model)
+{
+        <h1>@item.Name</h1>
+        <h5>
+        @item.BookCategory
+        </h5>
+        <p>@item.Bookinfo</p>
+} *@
+
+
