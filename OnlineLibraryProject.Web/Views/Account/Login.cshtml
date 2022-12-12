@@ -2,6 +2,7 @@
     ViewData["Title"] = "Login";
 
 }
+@model LoginViewModel
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -41,7 +42,7 @@
                 </div>
             </div>
         </div><!-- End Page Header -->
-        @model LoginViewModel
+       
         <div class="row ">
             <div class="col col-4 offset-4">
                 <h1 class="display-4 border-bottom text-center pb-2 border-2 ">@ViewData["Title"]</h1>
@@ -50,7 +51,7 @@
         <div class="row">
             <a href="c:\users\theku\source\repos\iwpbookproject\onlinelibraryproject.web\views\account\login.cshtml"></a>
             <div class="col-4 offset-4">
-                <form asp-controller="Account" asp-action="Login" method="post">
+                <form  method="post">
                     <div class="form-group mb-3">
                         <label asp-for="UserName" class="form-label ">Username</label>
                         <input asp-for="UserName" placeholder="johndoe" class="form-control" />
@@ -74,8 +75,6 @@
                         <br />
                         <label class="text-danger">@ViewData["ValidateMessage"]</label>
                     }
-
-
                 </form>
             </div>
         </div>
