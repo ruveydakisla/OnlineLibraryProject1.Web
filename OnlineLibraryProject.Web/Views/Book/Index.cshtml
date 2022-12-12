@@ -4,7 +4,7 @@
 }
 @model List<Book>
 
-<h1>Ürünler</h1>
+<h1>Kitaplar</h1>
 
 @if (TempData["status"] != null)
 {
@@ -21,9 +21,12 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Isim</th>
-            <th>Stok</th>
-            <th>İşlem</th>
+            <th>Kitap İsim</th>
+            <th>Yılı</th>
+            <th>Sayfa Numarası</th>
+            <th>Kategori</th>
+            <th>Kitap Bilgisi</th>
+            <th>Author</th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +36,11 @@
                 <td>@item.BookID</td>
                 <td>@item.Name</td>
                 <td>@item.Stock</td>
-                <td>@item.PageNumber</td>
+                <td>@item.Year</td>
+                 <td>@item.PageNumber</td>
+                  <td>@item.BookCategory</td>
+                  <td>@item.Bookinfo</td>
+
 
                 <td>
                     <a asp-controller="Book" asp-action="remove" asp-route-id="@item.BookID">Sil</a>
