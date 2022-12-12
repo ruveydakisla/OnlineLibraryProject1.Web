@@ -37,7 +37,6 @@ namespace OnlineLibraryProject.Web.Controllers
             if (ModelState.IsValid)
             {
                 string hashedPassword = EncryptWithMD5(model.Password);
-
                 User user = _context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == hashedPassword);
 
                 if (user != null)
