@@ -79,7 +79,6 @@ namespace OnlineLibraryProject.Web.Controllers
         {
             return RedirectToAction("Login", "Account");
         }
-
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Register(RegisterViewModel model)
@@ -88,9 +87,7 @@ namespace OnlineLibraryProject.Web.Controllers
             {
                 ModelState.AddModelError(nameof(model.UserName), "Username is already exist.");
                 return View(model);
-
             }
-
             if (ModelState.IsValid)
             {
                 User user = new()
@@ -103,7 +100,6 @@ namespace OnlineLibraryProject.Web.Controllers
                 _context.Users.Add(user);
 
                 _context.SaveChanges();
-
             }
 
             return View(model);

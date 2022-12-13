@@ -30,10 +30,6 @@
     <!-- Template Main CSS File -->
     <link href="~/PhotoFolio/assets/css/main.css" rel="stylesheet">
 </head>
-<button type="button" class="btn btn-success" asp-area="" asp-controller="Account" asp-action="Login">Login</button>
-
-<button type="button" class="btn btn-success " asp-area="" asp-controller="Account" asp-action="Register">Register</button>
-
 @await Html.PartialAsync("HpHeaderPartial")
 <body>
     <main id="main" data-aos="fade" data-aos-delay="1500">
@@ -45,10 +41,6 @@
                 </div>
             </div>
         </div><!-- End Page Header -->
-        <button type="button" class="btn btn-success" asp-area="" asp-controller="Account" asp-action="Login">Login</button>
-
-        <button type="button" class="btn btn-success " asp-area="" asp-controller="Account" asp-action="Register">Register</button>
-
         <div class="row ">
             <div class="col col-4 offset-4">
                 <h1 class="display-4 border-bottom text-center pb-2 border-2 ">@ViewData["Title"]</h1>
