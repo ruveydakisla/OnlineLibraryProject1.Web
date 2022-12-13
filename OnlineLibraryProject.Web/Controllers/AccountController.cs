@@ -55,7 +55,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "User");
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace OnlineLibraryProject.Web.Controllers
             ClaimsPrincipal claimUser = HttpContext.User;
 
             if (claimUser.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "User");
 
 
             return View();

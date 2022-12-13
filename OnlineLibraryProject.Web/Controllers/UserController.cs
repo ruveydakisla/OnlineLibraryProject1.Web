@@ -19,13 +19,9 @@ namespace OnlineLibraryProject.Web.Controllers
         public IActionResult BookShow(int id)
         {
             var book = bm.GetById(id);
-
             return View(book);
         }
 
-        //public IActionResult BookShow(Book updateBook, int bookId, string type)
-        //{
-
-        //}
+        
     }
 }
