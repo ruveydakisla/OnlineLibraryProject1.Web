@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnlineLibraryProject.Web.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        @await Html.PartialAsync("HpHeaderPartial")
+    @await Html.PartialAsync("HpHeaderPartial")
 
+
+<body>
+    
                         @if (User.Identity.IsAuthenticated)
                         {
                             if (User.IsInRole("admin"))
@@ -37,7 +38,7 @@
                             </li>
                         }
 
-    </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

@@ -66,7 +66,6 @@ namespace OnlineLibraryProject.Web.Controllers
             return View();
         }
         [AllowAnonymous]
-
         public IActionResult Login() {
             ClaimsPrincipal claimUser = HttpContext.User;
 
@@ -76,7 +75,10 @@ namespace OnlineLibraryProject.Web.Controllers
 
             return View();
         }
-
+        public IActionResult LoginPage()
+        {
+            return RedirectToAction("Login", "Account");
+        }
 
         [HttpPost]
         [AllowAnonymous]
