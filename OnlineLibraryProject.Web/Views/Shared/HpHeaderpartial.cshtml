@@ -1,5 +1,4 @@
 ﻿
-<!-- ======= Header ======= -->
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
@@ -23,9 +22,11 @@
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav>
-            <button type="button" class="btn btn-success" >Login</button>
-
-            <button type="button" class="btn btn-success" >Register</button>
+            <button type="button" class="btn btn-success"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a></button>
+            
+            <button type="button" class=" btn btn-success" >
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+            </button>
         </nav>
     </div>
 </header><!-- End Header -->

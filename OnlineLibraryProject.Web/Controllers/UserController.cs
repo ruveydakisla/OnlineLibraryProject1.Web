@@ -18,7 +18,8 @@ namespace OnlineLibraryProject.Web.Controllers
         [HttpGet]
         public IActionResult BookShow(int id)
         {
-            var book =bm.GetById(id);
+            var book = bm.GetById(id);
+
             return View(book);
         }
 
