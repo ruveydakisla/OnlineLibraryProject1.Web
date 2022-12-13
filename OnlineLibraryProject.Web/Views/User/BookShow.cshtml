@@ -3,6 +3,8 @@
     ViewData["Title"] = "BookShow";
 }
 @model Book
+
+<h2> Kitap</h2>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +55,7 @@
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
-            <h2>Witcher 1 Son Dilek</h2>                       
+            <h2>@Model.Name</h2>                       
           </div>
         </div>
       </div>
@@ -68,24 +70,8 @@
             <div class="swiper-wrapper align-items-center">
 
               <div class="swiper-slide">
-                <img src="~/PhotoFolio/assets/img/gallery/wildhunt.jpg" alt="">
+                <img src="@Model.BookImage" alt="">
               </div>
-              <div class="swiper-slide">
-                <img src="~/PhotoFolio/assets/img/gallery/wolfs.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="~/PhotoFolio/assets/img/gallery/tris.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="~/PhotoFolio/assets/img/gallery/ciri.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="~/PhotoFolio/assets/img/gallery/geralt.jpg" alt="">
-              </div>
-              <div class="swiper-slide">
-                <img src="~/PhotoFolio/assets/img/gallery/eredin.jpg" alt="">
-              </div>
-
             </div>
             <div class="swiper-pagination"></div>
           </div>
@@ -98,16 +84,16 @@
 
           <div class="col-lg-8">
             <div class="portfolio-description">
-              <h2>Kitap hakkında</h2>
+              <h2>@Model.Name</h2>
               <p>
-                arka kapak yazısı
+                @Model.Bookinfo
               </p>
               
 
               <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  yazarın sözü
+                  yazarın sözü @Model.AuthorID.AuthorAbout
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
                 <div>
@@ -145,6 +131,8 @@
   <!-- ======= Footer ======= -->
    
 
+bura<label asp-for="Name">@Model.Name </label>
+<label  asp-for="BookID"></label>
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader">
@@ -166,5 +154,22 @@
 </html>
 
 
+
+<input type="text" asp-for="Name" />
+<br />
+<label>Kitap Adeti:</label>
+
+<br />
+<label>Kitap Basım Yılı:</label>
+<input type="text" asp-for="Year" />
+<br />
+<label>Sayfa Sayısı:</label>
+<input type="text" asp-for="PageNumber" />
+<br />
+<label>Kitap kategori</label>
+<input type="text" asp-for="BookCategory" />
+<br />
+<label>Kitap Ön bilgi</label>
+<input type="text" asp-for="Bookinfo" />
 
 
