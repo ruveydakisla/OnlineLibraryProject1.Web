@@ -24,34 +24,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="~/PhotoFolio/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/PhotoFolio/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="~/PhotoFolio/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="~/PhotoFolio/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="~/PhotoFolio/assets/vendor/aos/aos.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
     <link href="~/PhotoFolio/assets/css/main.css" rel="stylesheet">
-
-    <!-- =======================================================
-    * Template Name: PhotoFolio - v1.1.1
-    * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
-
 <body>
-
-            <!-- ======= Header ======= -->
     @await Html.PartialAsync("UpHeaderPartial")
-
-            <!-- End Header -->
-    <!-- ======= Hero Section ======= -->
-    <!-- End Hero Section -->
-        <!-- ======= Gallery Section ======= -->
         <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
             <div class="container">
                 <div class="row justify-content-center">
@@ -63,9 +45,7 @@
                 </div>
             </div>
         </section><!-- End Hero Section -->
-       
         <main id="main" data-aos="fade" data-aos-delay="1500">
-
             <!-- ======= Gallery Section ======= -->
             <section id="gallery" class="gallery">
                 <div class="container-fluid">
@@ -73,32 +53,23 @@
                     <div class="row gy-4 justify-content-center">
                         @foreach (var item in Model)
                     {
-                        
-                    
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="gallery-item h-100">
                                 <img src="@item.BookImage" class="img-fluid" alt="">
-
                                 <div class="gallery-links d-flex align-items-center justify-content-center">
                                     <h2 style="color:pink"><i><a asp-controller="User" asp-action="BookShow" asp-route-id="@item.BookID">@item.Name</a></i> </h2>
                                 </div>
                             </div>
-                        </div><!-- End Gallery Item -->
-                        <!-- End Gallery Item -->
+                        </div>
                     }
                     </div>
-
                 </div>
-            </section><!-- End Gallery Section -->
-
-    </main><!-- End #main -->
-    <!-- ======= Footer ======= -->
+            </section>
+    </main>
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
     <div id="preloader">
         <div class="line"></div>
     </div>
-
     <!-- Vendor JS Files -->
     <script src="~/PhotoFolio/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/PhotoFolio/assets/vendor/swiper/swiper-bundle.min.js"></script>
