@@ -7,6 +7,31 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnlineLibraryProject.Web.styles.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>PhotoFolio Bootstrap Template - Gallery</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+   
+    <link href="~/PhotoFolio/assets/img/favicon.png" rel="icon">
+    <link href="~/PhotoFolio/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+   
+    <link href="~/PhotoFolio/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/aos/aos.css" rel="stylesheet">
+
+    
+    <link href="~/PhotoFolio/assets/css/main.css" rel="stylesheet">    
 </head>
     @await Html.PartialAsync("HpHeaderPartial")
 
@@ -21,12 +46,12 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Admin">Admintisor</a>
                                 </li>
                             }
-                            <li class="nav-item ms-auto">
+                                <li class="nav-item ms-auto">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
-                            </li>
-                            <li class="nav-item">
+                                </li>
+                                <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">Log Out</a>
-                            </li>
+                                </li>
                         }
                         else
                         {
@@ -45,9 +70,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    
         @await Html.PartialAsync("FooterPartial")
-    </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
