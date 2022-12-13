@@ -1,10 +1,8 @@
-﻿@{Layout = null;
-}
-@using EntityLayer.Concrete
+﻿@using EntityLayer.Concrete
 @{
     ViewData["Title"] = "Index";
 }
-
+@model List<Book>
 
 } 
 <!DOCTYPE html>
@@ -49,27 +47,23 @@
 
             <!-- ======= Header ======= -->
     @await Html.PartialAsync("UpHeaderPartial")
-    @model List<Book>
 
             <!-- End Header -->
     <!-- ======= Hero Section ======= -->
     <!-- End Hero Section -->
-
-    <main id="main" data-aos="fade" data-aos-delay="1500">
-
         <!-- ======= Gallery Section ======= -->
         <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6 text-center">
                         <h2>I'm <span>Jenny Wilson</span> a Professional Photographer from New York City</h2>
-                        <p>Blanditiis praesentium aliquam illum tempore incidunt debitis dolorem magni est deserunt sed qui libero. Qui voluptas amet.</p>
+                        <p>B</p>
                         <a href="contact.html" class="btn-get-started">Available for hire</a>
                     </div>
                 </div>
             </div>
         </section><!-- End Hero Section -->
-
+       
         <main id="main" data-aos="fade" data-aos-delay="1500">
 
             <!-- ======= Gallery Section ======= -->
@@ -77,57 +71,21 @@
                 <div class="container-fluid">
 
                     <div class="row gy-4 justify-content-center">
+                        @foreach (var item in Model)
+                    {
+                        
+                    
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="gallery-item h-100">
-                                <img src="~/PhotoFolio/assets/img/gallery/love.jpg" class="img-fluid" alt="">
-                                <div class="gallery-links d-flex align-items-center justify-content-center">
-                                    <h2 style="color:pink"><i>Love</i> </h2>
-                                </div>
-                            </div>
-                        </div><!-- End Gallery Item -->
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="gallery-item h-100">
-                                <img src="~/PhotoFolio/assets/img/gallery/history.jpg" class="img-fluid" alt="">
-                                <div class="gallery-links d-flex align-items-center justify-content-center">
-                                    <h2 style="color:saddlebrown"><i>History</i> </h2>
-                                </div>
-                            </div>
-                        </div><!-- End Gallery Item -->
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="gallery-item h-100">
-                                <img src="~/PhotoFolio/assets/img/gallery/science fiction.jpg" class="img-fluid" alt="">
-                                <div class="gallery-links d-flex align-items-center justify-content-center">
-                                    <h2 style="color:darkred"><i>Science Fiction</i> </h2>
-                                </div>
-                            </div>
-                        </div><!-- End Gallery Item -->
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="gallery-item h-100">
-                                <img src="~/PhotoFolio/assets/img/gallery/child.jpg" class="img-fluid" alt="">
-                                <div class="gallery-links d-flex align-items-center justify-content-center">
-                                    <h2 style="color:dodgerblue"><i>Child</i> </h2>
-                                </div>
-                            </div>
-                        </div><!-- End Gallery Item -->
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="gallery-item h-100">
-                                <img src="~/PhotoFolio/assets/img/gallery/adventure.jpg" class="img-fluid" alt="">
-                                <div class="gallery-links d-flex align-items-center justify-content-center">
-                                    <h2 style="color:forestgreen"><i>Adventure</i> </h2>
-                                </div>
-                            </div>
-                        </div><!-- End Gallery Item -->
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="gallery-item h-100">
-                                <img src="~/PhotoFolio/assets/img/gallery/classics.jpg" class="img-fluid" alt="">
-                                <div class="gallery-links d-flex align-items-center justify-content-center">
-                                    <h2 style="color:slategrey"><i>Clasics</i> </h2>
-                                </div>
-                            </div>
-                        </div><!-- End Gallery Item -->
+                                <img src="@item.BookImage" class="img-fluid" alt="">
 
-
-
+                                <div class="gallery-links d-flex align-items-center justify-content-center">
+                                    <h2 style="color:pink"><i><a asp-controller="User" asp-action="BookShow" asp-route-id="@item.BookID">@item.Name</a></i> </h2>
+                                </div>
+                            </div>
+                        </div><!-- End Gallery Item -->
+                        <!-- End Gallery Item -->
+                    }
                     </div>
 
                 </div>
@@ -135,8 +93,6 @@
 
     </main><!-- End #main -->
     <!-- ======= Footer ======= -->
-    @await Html.PartialAsync("FooterPartial")
-
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <div id="preloader">

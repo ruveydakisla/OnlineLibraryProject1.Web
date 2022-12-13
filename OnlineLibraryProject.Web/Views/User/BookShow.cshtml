@@ -3,8 +3,28 @@
     ViewData["Title"] = "BookShow";
 }
 @model Book
- 
+
+<h2> Kitap</h2>
+
+bura<label asp-for="Name">@Model.Name </label>
+<label  asp-for="BookID"></label>
 
 
+<input type="text" asp-for="Name" />
+<br />
+<label>Kitap Adeti:</label>
+
+<br />
+<label>Kitap Basım Yılı:</label>
+<input type="text" asp-for="Year" />
+<br />
+<label>Sayfa Sayısı:</label>
+<input type="text" asp-for="PageNumber" />
+<br />
+<label>Kitap kategori</label>
+<input type="text" asp-for="BookCategory" />
+<br />
+<label>Kitap Ön bilgi</label>
+<input type="text" asp-for="Bookinfo" />
 
 

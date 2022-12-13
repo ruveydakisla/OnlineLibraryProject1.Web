@@ -18,6 +18,7 @@ namespace EntityLayer.Concrete
         public int PageNumber { get; set; }
         public string BookCategory { get; set; }
         public string Bookinfo { get; set; }
+        public string BookImage { get; set; }
         public Author? author { get; set; }
         public List<Comment>? comments { get; set; }
     }

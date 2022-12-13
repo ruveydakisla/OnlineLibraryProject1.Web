@@ -1,7 +1,11 @@
+using BussinessLayer.Abstract;
+using DataAccessLayer.Abstact;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using NuGet.Protocol.Core.Types;
 using OnlineLibraryProject.Web.Models;
 using System.Configuration;
 
@@ -27,6 +31,7 @@ builder.Services.AddAuthentication(
     });
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();
+builder.Services.AddScoped<IBookDal, EfBookRepository>();
 
 
 //builder.Services.AddDbContext<AppDbContext>(Options =>
