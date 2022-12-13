@@ -13,7 +13,7 @@ namespace OnlineLibraryProject.Web.Controllers
         public IActionResult Index()
         {
             
-            return RedirectToAction("BookShow");
+            return View();
         }
         [HttpGet]
         public IActionResult BookShow(int id)
