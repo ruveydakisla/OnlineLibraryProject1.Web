@@ -21,7 +21,7 @@ builder.Services.AddSession();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option => {
-        option.Cookie.Name = ".WebApplication2.auth";
+        option.Cookie.Name = ".OnlineLibraryProject.Web.auth";
         option.ExpireTimeSpan = TimeSpan.FromDays(7);
         option.SlidingExpiration = false;
         option.LoginPath = "/Account/Login";
@@ -32,18 +32,6 @@ builder.Services.AddAuthentication(
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IBookDal, EfBookRepository>();
-
-
-//builder.Services.AddDbContext<AppDbContext>(Options =>
-//{
-//    Options.UseNpgsql(builder.Configuration.GetConnectionString("BooksDb"));
-//});
-
-
-
-
-
-
 
 var app = builder.Build();
 
@@ -57,7 +45,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
