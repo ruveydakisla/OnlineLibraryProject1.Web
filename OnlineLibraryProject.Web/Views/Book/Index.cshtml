@@ -4,7 +4,7 @@
 }
 @model List<Book>
 
-<h1>Kitaplar</h1>
+<h1>Books</h1>
 
 @if (TempData["status"] != null)
 {
@@ -19,7 +19,7 @@
 <a asp-controller="Book" asp-action="add">Ekle </a>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="text-light">
             <th>Id</th>
             <th>Kitap İsim</th>
             <th> Stock</th>
@@ -36,7 +36,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="text-light">
                 <td>@item.BookID</td>
                 <td>@item.Name</td>
                 <td>@item.Stock</td>
