@@ -33,11 +33,6 @@ namespace OnlineLibraryProject.Web.Controllers
         public IActionResult BookShow(Book updateProduct, int productId, string type)
         {
             updateProduct.BookID= productId;
-
-
-            TempData["status"] = "Ürün başarıyla güncellendi";
-
-
             return View(updateProduct);
         }
 
