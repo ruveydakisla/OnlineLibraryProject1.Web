@@ -18,19 +18,19 @@ namespace OnlineLibraryProject.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        UserManager um=new UserManager(new EfUserRepository());
+        UserManager um = new UserManager(new EfUserRepository());
         private readonly Context _context;
 
         public AccountController(Context dataBaseContext)
         {
             this._context = dataBaseContext;
-           
+
         }
-        
+
 
         [HttpPost]
         [AllowAnonymous]
-        public  IActionResult Login(LoginViewModel model)
+        public IActionResult Login(LoginViewModel model)
         {
             //var values = um.GetAllUsers();
             //return View (values);
@@ -65,7 +65,8 @@ namespace OnlineLibraryProject.Web.Controllers
 
             return View();
         }
-        [AllowAnonymous]
+        
+    [AllowAnonymous]
         public IActionResult Login() {
             ClaimsPrincipal claimUser = HttpContext.User;
 
@@ -75,7 +76,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
             return View();
         }
-        
+
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Register(RegisterViewModel model)
@@ -102,14 +103,14 @@ namespace OnlineLibraryProject.Web.Controllers
             return View(model);
         }
         [AllowAnonymous]
-        public IActionResult Register() 
+        public IActionResult Register()
         {
             return View();
         }
         [Authorize]
         public IActionResult Profile()
         {
-           
+
 
             return View();
         }
@@ -175,6 +176,7 @@ namespace OnlineLibraryProject.Web.Controllers
             return hashedPassword;
         }
 
+        
        
     }
 
