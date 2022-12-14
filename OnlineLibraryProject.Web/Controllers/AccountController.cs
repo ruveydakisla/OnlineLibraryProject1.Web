@@ -94,7 +94,7 @@ namespace OnlineLibraryProject.Web.Controllers
                     Address = model.Address,
                     NameSurname = model.NameSurname
                 };
-                _context.Users.Add(user);
+                um.UserAdd(user);
 
                 _context.SaveChanges();
             }
