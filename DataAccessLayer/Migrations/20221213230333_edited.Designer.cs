@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221213161227_BookImageAddedForBooktable")]
-    partial class BookImageAddedForBooktable
+    [Migration("20221213230333_edited")]
+    partial class edited
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,6 +80,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int>("Year")
                         .HasColumnType("integer");
+
+                    b.Property<string>("selamlar")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("BookID");
 

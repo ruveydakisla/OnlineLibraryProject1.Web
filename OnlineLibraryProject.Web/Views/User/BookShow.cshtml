@@ -4,7 +4,6 @@
 }
 @model Book
 
-<h2> Kitap</h2>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,13 +92,13 @@
               <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  yazarın sözü @Model.AuthorID.AuthorAbout
+                  @Model.AuthorQuintessence
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
                 <div>
-                  <img src="~/Photofolio/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>yazar adı</h3>
-                  <h4>writer</h4>
+                  
+                  <h3>@Model.AuthorName</h3>
+                  <h4>Yazar</h4>
                 </div>
               </div>
 
@@ -110,13 +109,12 @@
 
           <div class="col-lg-3">
             <div class="portfolio-info">
-              <h3>Project information</h3>
+              <h3>Kitap Bilgileri</h3>
               <ul>
-                <li><strong>Category</strong> <span>Nature Photography</span></li>
-                <li><strong>yazar</strong> <span>ASU Company</span></li>
-                <li><strong>basım tarihi</strong> <span>01 March, 2022</span></li>
-                <li><strong>yayınevi</strong> <a href="#">www.example.com</a></li>
-                <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
+                <li><strong>Stok</strong> <span>@Model.Stock</span></li>
+                <li><strong>Basım Yılı</strong> <span>@Model.Year</span></li>
+                <li><strong>Sayfa Sayısı</strong> <span>@Model.PageNumber</span></li>
+                <li><strong>Kitap Kategorisi</strong><span>@Model.BookCategory</span> </li>
               </ul>
             </div>
           </div>
@@ -131,8 +129,7 @@
   <!-- ======= Footer ======= -->
    
 
-bura<label asp-for="Name">@Model.Name </label>
-<label  asp-for="BookID"></label>
+
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader">
@@ -152,24 +149,4 @@ bura<label asp-for="Name">@Model.Name </label>
 </body>
 
 </html>
-
-
-
-<input type="text" asp-for="Name" />
-<br />
-<label>Kitap Adeti:</label>
-
-<br />
-<label>Kitap Basım Yılı:</label>
-<input type="text" asp-for="Year" />
-<br />
-<label>Sayfa Sayısı:</label>
-<input type="text" asp-for="PageNumber" />
-<br />
-<label>Kitap kategori</label>
-<input type="text" asp-for="BookCategory" />
-<br />
-<label>Kitap Ön bilgi</label>
-<input type="text" asp-for="Bookinfo" />
-
 

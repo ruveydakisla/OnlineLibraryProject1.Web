@@ -75,10 +75,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
             return View();
         }
-        public IActionResult LoginPage()
-        {
-            return RedirectToAction("Login", "Account");
-        }
+        
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Register(RegisterViewModel model)
