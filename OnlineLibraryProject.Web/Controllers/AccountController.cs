@@ -31,7 +31,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             
             if (ModelState.IsValid)
@@ -53,9 +53,18 @@ namespace OnlineLibraryProject.Web.Controllers
 
                     ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
-                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                    
+                    AuthenticationProperties properties = new AuthenticationProperties()
+                    {
 
-                    return RedirectToAction("Index", "User");
+                        AllowRefresh = true,
+                        IsPersistent = model.KeepLoggedIn
+                    };
+                    //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                   new ClaimsPrincipal(identity), properties);
+
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -68,7 +77,15 @@ namespace OnlineLibraryProject.Web.Controllers
         
     [AllowAnonymous]
         public IActionResult Login() {
+
+            ClaimsPrincipal claimUser = HttpContext.User;
+
+            if (claimUser.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
+
             return View();
+
+
         }
 
         [HttpPost]
