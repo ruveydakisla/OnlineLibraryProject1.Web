@@ -1,0 +1,15 @@
+﻿@using EntityLayer.Concrete;
+@{
+    ViewData["Title"] = "Reading Group";
+}
+@model ReadingGroup
+<div class="container">
+    <h1>Reading Groups</h1>
+    <form asp-controller="ReadingGroup" asp-action="Add" method="post">
+       
+        <label>Grup Name:</label>
+        <input type="text" asp-for="GroupName" />
+        <br />
+        <button type="submit">Grup Kaydet</button>
+    </form>
+</div>
