@@ -12,6 +12,7 @@ using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Concrete;
 using System;
+
   
 namespace OnlineLibraryProject.Web.Controllers
 {
@@ -32,6 +33,7 @@ namespace OnlineLibraryProject.Web.Controllers
         [AllowAnonymous]
         public IActionResult Login(LoginViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
                 string hashedPassword = EncryptWithMD5(model.Password);
@@ -66,7 +68,6 @@ namespace OnlineLibraryProject.Web.Controllers
 
         [AllowAnonymous]
         public IActionResult Login() {
-
             return View();
         }
 

@@ -1,0 +1,46 @@
+﻿
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <i class="bi bi-book"></i>
+            <h1 class="display-4">OnLib</h1>
+        </a>
+        <nav id="navbar" class="navbar">
+            <ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a class=" text-success nav-link " asp-area="" asp-controller="Admin" asp-action="Index">Administrator</a>
+                        </li>
+                    }
+
+                    <li class="nav-item ms-auto">
+                        <a class="nav-link  text-success" asp-area="" asp-controller="Account" asp-action="Profile">
+                            <i class="fa-solid fa-user me-2"></i>@User.FindFirst("Username").Value
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" asp-area="" asp-controller="Account" asp-action="Logout"><i class="text-success fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item ms-auto ">
+                        <a class="nav-link text-success" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class=" nav-link text-success" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    </li>
+                }
+            </ul>
+        </nav><!-- .navbar -->
+       
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+</header>

@@ -33,18 +33,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IBookDal, EfBookRepository>();
 
-
-//builder.Services.AddDbContext<AppDbContext>(Options =>
-//{
-//    Options.UseNpgsql(builder.Configuration.GetConnectionString("BooksDb"));
-//});
-
-
-
-
-
-
-
 var app = builder.Build();
 
 
@@ -57,7 +45,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
