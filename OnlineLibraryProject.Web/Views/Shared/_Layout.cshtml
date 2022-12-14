@@ -33,30 +33,12 @@
     
     <link href="~/PhotoFolio/assets/css/main.css" rel="stylesheet">    
 </head>
-    @await Html.PartialAsync("HpHeaderPartial")
+    
 
 
 <body>
     
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            if (User.IsInRole("admin"))
-                            {
-                                <li class="nav-item ms-auto">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Admin">Kitap İşlemleri</a>
-                                </li>
-                            }
-                                <li class="nav-item ms-auto">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">Log Out</a>
-                                </li>
-                        }
-                        else
-                        {
-                            
-                        }
+                     
 
     
     <div class="container">
