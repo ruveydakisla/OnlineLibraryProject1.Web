@@ -51,10 +51,26 @@ namespace DataAccessLayer.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("BookID"));
 
-                    b.Property<int>("AuthorID")
+                    b.Property<string>("AuthorAbout")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("AuthorID")
                         .HasColumnType("integer");
 
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("AuthorQuintessence")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("BookCategory")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("BookImage")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -190,9 +206,7 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("EntityLayer.Concrete.Author", "author")
                         .WithMany()
-                        .HasForeignKey("AuthorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorID");
 
                     b.Navigation("author");
                 });

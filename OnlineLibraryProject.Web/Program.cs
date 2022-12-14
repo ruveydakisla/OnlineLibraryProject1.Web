@@ -1,7 +1,11 @@
+using BussinessLayer.Abstract;
+using DataAccessLayer.Abstact;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using NuGet.Protocol.Core.Types;
 using OnlineLibraryProject.Web.Models;
 using System.Configuration;
 
@@ -27,6 +31,7 @@ builder.Services.AddAuthentication(
     });
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();
+builder.Services.AddScoped<IBookDal, EfBookRepository>();
 
 
 //builder.Services.AddDbContext<AppDbContext>(Options =>
@@ -49,7 +54,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -64,6 +68,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=index}/{id?}");
 
 app.Run();

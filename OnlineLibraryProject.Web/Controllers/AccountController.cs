@@ -12,7 +12,7 @@ using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.Concrete;
 using System;
-
+  
 namespace OnlineLibraryProject.Web.Controllers
 {
     [Authorize]
@@ -37,7 +37,6 @@ namespace OnlineLibraryProject.Web.Controllers
             if (ModelState.IsValid)
             {
                 string hashedPassword = EncryptWithMD5(model.Password);
-
                 User user = _context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == hashedPassword);
 
                 if (user != null)
@@ -56,7 +55,7 @@ namespace OnlineLibraryProject.Web.Controllers
 
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "User");
                 }
                 else
                 {
@@ -67,18 +66,16 @@ namespace OnlineLibraryProject.Web.Controllers
             return View();
         }
         [AllowAnonymous]
-
         public IActionResult Login() {
             ClaimsPrincipal claimUser = HttpContext.User;
 
             if (claimUser.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "User");
 
 
             return View();
         }
-
-
+        
         [HttpPost]
         [AllowAnonymous]
         public IActionResult Register(RegisterViewModel model)
@@ -87,9 +84,7 @@ namespace OnlineLibraryProject.Web.Controllers
             {
                 ModelState.AddModelError(nameof(model.UserName), "Username is already exist.");
                 return View(model);
-
             }
-
             if (ModelState.IsValid)
             {
                 User user = new()
@@ -102,7 +97,6 @@ namespace OnlineLibraryProject.Web.Controllers
                 um.UserAdd(user);
 
                 _context.SaveChanges();
-
             }
 
             return View(model);
@@ -182,7 +176,6 @@ namespace OnlineLibraryProject.Web.Controllers
         }
 
        
-
 
     }
 

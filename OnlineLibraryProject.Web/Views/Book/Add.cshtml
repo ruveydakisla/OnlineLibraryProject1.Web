@@ -3,21 +3,125 @@
 @{
     ViewData["Title"] = "Add";
 }
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>PhotoFolio Bootstrap Template - Gallery</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link href="~/PhotoFolio/assets/img/favicon.png" rel="icon">
+    <link href="~/PhotoFolio/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="~/PhotoFolio/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/PhotoFolio/assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/PhotoFolio/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+     @await Html.PartialAsync("UpHeaderPartial")
+    <main id="main" data-aos="fade" data-aos-delay="1500">
+        <div class="page-header d-flex align-items-center">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col col-4 offset-4">
+                <h1 class="display-4 border-bottom text-center pb-2 border-2 ">@ViewData["Add Book"]</h1>
+            </div>
+        </div>
 @model Book
-<h1>Kitap Ekleme</h1>
+<div class="row ">
+       <div class="col-4 offset-4">
 <form asp-controller="Book" asp-action="Add" method="post">
-    <label>Kitap ismi:</label>
-    <input type="text" asp-for="Name" />
-    <br />
-    <label>Kitap Adeti:</label>
-    <input type="text" asp-for="Stock" />
-    <br />
-    <label>Yılı:</label>
-    <input type="text" asp-for="Year" />
-    <br />
-    <label>Kitap Sayfa Numarası</label>
-    <input type="text" asp-for="PageNumber" />
+                    <label class="form-label">Book ID:</label>
+                    <div class="form-group mb-3">
 
-    <button type="submit">Kitap Kaydet</button>
-</form>
+                        <input type="text" class="form-control" asp-for="BookID" />
+                    </div>
+                    <label class="form-label">Book Name:</label>
+                    <div class="form-group mb-3">
 
+                        <input type="text" class="form-control" asp-for="Name" />
+                    </div>
+                    <label class="form-label">Stock:</label><br/>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" asp-for="Stock" />
+                    </div>
+                        <label class="form-label">Year:</label>
+                    <div class="form-group mb-3">
+
+                        <input type="text" class="form-control" asp-for="Year" />
+                    </div>
+                    <label class="form-label">Page Number :</label>
+                    <div class="form-group mb-3">
+
+                        <input type="text" class="form-control" asp-for="PageNumber" />
+                    </div>
+                    <label class="form-label">Book Category :</label>
+                    <div class="form-group mb-3">
+
+                        <input type="text" class="form-control" asp-for="BookCategory" />
+                    </div>
+                    <label class="form-label">Book İmage Path:</label>
+                    <div class="form-group mb-3">
+
+                        <input type="text" class="form-control" asp-for="BookImage" />
+                    </div>
+                    <label class="form-label">Book Preliminary Information : </label>
+                    <div class="form-group mb-3">
+ 
+                    <input type="text" class="form-control"asp-for="AuthorQuintessence" />
+                    </div>
+                    <label class="form-label">Author Quintessence </label>
+                    <div class="form-group mb-3">
+
+                        <input type="text" class="form-control" asp-for="AuthorAbout" />
+                    </div> <label class="form-label">Author About </label>
+                    <div class="form-group mb-3">
+
+
+                        <input type="text" class="form-control" asp-for="Bookinfo" />
+                    </div>
+                    <label class="form-label">Author Name : </label>
+                    <div class="form-group mb-3">
+
+                        <input type="text" class="form-control" asp-for="AuthorName" />
+                    </div>
+                    <div class="form-group d-grid mb-3 ">
+                    <button type="submit" class="btn btn-success d-block"><i class="fa-solid fa-paper-plane me-2"></i>Save Book</button>
+                    </div>
+</form>                 
+        </div>
+        </div>
+    </main>
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader">
+        <div class="line"></div>
+    </div>
+
+    <script src="~/PhotoFolio/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/PhotoFolio/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/PhotoFolio/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/PhotoFolio/assets/vendor/aos/aos.js"></script>
+    <script src="~/PhotoFolio/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/PhotoFolio/assets/js/main.js"></script>
+
+   
+
+</body>
