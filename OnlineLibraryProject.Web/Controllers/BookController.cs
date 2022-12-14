@@ -32,6 +32,7 @@ namespace OnlineLibraryProject.Web.Controllers
             bm.BookRemove(book);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -41,10 +42,10 @@ namespace OnlineLibraryProject.Web.Controllers
         [HttpPost]
         public IActionResult Update(Book updateBook,int bookId,string type)
         {
+
             updateBook.BookID= bookId;  
             bm.BookUpdate(updateBook);
-
-            TempData["status"] = "Ürün Başarıyla güncellendi";
+            TempData["status"] = "Kitap Başarıyla güncellendi";
             return RedirectToAction("index");
         }
         [HttpGet]
