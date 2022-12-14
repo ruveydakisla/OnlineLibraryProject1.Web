@@ -21,7 +21,7 @@ builder.Services.AddSession();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option => {
-        option.Cookie.Name = ".WebApplication2.auth";
+        option.Cookie.Name = ".OnlineLibraryProject.Web.auth";
         option.ExpireTimeSpan = TimeSpan.FromDays(7);
         option.SlidingExpiration = false;
         option.LoginPath = "/Account/Login";
@@ -61,6 +61,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 app.UseAuthentication();
 
 

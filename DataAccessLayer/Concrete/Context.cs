@@ -14,7 +14,7 @@ namespace DataAccessLayer.Concrete
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;Database=ProjectIWebApp;Port=5432;User Id=postgres;Password=user123.");
+            optionsBuilder.UseNpgsql("Server=localhost;Database=ProjectIWebApp;Port=5432;User Id=postgres;Password=Mk7161**");
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Book> Books { get; set; }
