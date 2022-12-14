@@ -7,14 +7,35 @@
         </a>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                @if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("admin"))
+    {
+        <li class="nav-item ms-auto">
+            <a class="active" asp-area="" asp-controller="Admin" asp-action="Admin">Kitap İşlemleri</a>
+        </li>
+
+        <li class="nav-item ms-auto">
+           <a class="active" asp-area="" asp-controller="Account" asp-action="Profile">Profile</a>
+        </li>
+
+        
+    }
+}
+else
+{
+
+}
             </ul>
-        </nav>
+        </nav><!-- .navbar -->
         <button type="button" class="btn btn-success"><a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">Log Out</a></button>
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
        
     </div>
 </header>
+
+
+
+
+

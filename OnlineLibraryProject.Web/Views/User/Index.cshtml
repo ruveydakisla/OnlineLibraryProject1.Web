@@ -5,8 +5,6 @@
 @model List<Book>
 
 } 
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -33,6 +31,7 @@
     <link href="~/PhotoFolio/assets/css/main.css" rel="stylesheet">
 </head>
 <body>
+    @await Html.PartialAsync("AdminHeaderPartial")
         <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
             <div class="container">
                 <div class="row justify-content-center">
@@ -80,6 +79,6 @@
 
 </body>
 
-</html>
+
 
 
