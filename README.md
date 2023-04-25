@@ -1,6 +1,7 @@
 # OnlineLibraryProject.Web
 - ASP.Net Mvc online kütüphane sitesi kitap konusuna göre kitap seçilip bilgiler verilir.
 -- Yönetici(admin) girişi yapılarak kitap işlemlerini yapabilir 
+
 ### Sayfalar
 - Kullanıcı kayıt Ekranı
 - ![firefox_BZPWgHarLj](https://user-images.githubusercontent.com/74324563/234369034-5e654ea8-ae2e-4455-9285-505a5ddff625.png)
@@ -17,3 +18,5 @@
 - ![resim](https://user-images.githubusercontent.com/74324563/234370732-9bc7d446-94ac-438c-8125-9b72a458c60f.png)
 - Kitaplarla ilgili işlemlere ulaşılır ve işlemler yapılır,Kitap Ekleme ,Silme ,Güncelleme
 - ![resim](https://user-images.githubusercontent.com/74324563/234374232-88481ebb-fab0-438c-a439-63dce7cd27b0.png)
+### database kullanıcı Tablosu:
+![resim](https://user-images.githubusercontent.com/74324563/234375087-688f04d2-c2cb-475c-93fa-98584b28300a.png)
