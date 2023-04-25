@@ -1,5 +1,5 @@
 # OnlineLibraryProject.Web
--- asp.net Mvc online kütüphane sitesi kitap konusuna göre kitap seçilip bilgiler verilir.
+- ASP.Net Mvc online kütüphane sitesi kitap konusuna göre kitap seçilip bilgiler verilir.
 -- Yönetici(admin) girişi yapılarak kitap işlemlerini yapabilir 
 ### Sayfalar
 - Kullanıcı kayıt Ekranı
