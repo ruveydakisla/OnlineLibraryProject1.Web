@@ -1,6 +1,7 @@
 # OnlineLibraryProject.Web
-- ASP.Net Mvc online kütüphane sitesi kitap konusuna göre kitap seçilip bilgiler verilir.
--- Yönetici(admin) girişi yapılarak kitap işlemlerini yapabilir 
+Bu projede ASP.Net Mvc kullanılarak yapılmıştır npm migration,kullanılıp oop temelli yapılmıştır.
+- Online kütüphane sitesi kitap konusuna göre kitap seçilip bilgiler verilir.
+- Yönetici(admin) girişi yapılarak kitap işlemlerini yapabilir 
 
 ### Sayfalar
 - Kullanıcı kayıt Ekranı
@@ -18,5 +19,10 @@
 - ![resim](https://user-images.githubusercontent.com/74324563/234370732-9bc7d446-94ac-438c-8125-9b72a458c60f.png)
 - Kitaplarla ilgili işlemlere ulaşılır ve işlemler yapılır,Kitap Ekleme ,Silme ,Güncelleme
 - ![resim](https://user-images.githubusercontent.com/74324563/234374232-88481ebb-fab0-438c-a439-63dce7cd27b0.png)
-### database kullanıcı Tablosu:
+### database kullanıcı Tablosu: 
+user uuid id şifreleme kullanılmıştır
 ![resim](https://user-images.githubusercontent.com/74324563/234375337-f421930c-569e-4602-9efa-4b0dc8639d3d.png)
+- Kitap Tablosu
+- ![resim](https://user-images.githubusercontent.com/74324563/234375796-b31e14a7-1212-412c-821c-807718f16323.png)
+- Yazar Tablosu
+- ![resim](https://user-images.githubusercontent.com/74324563/234375904-f1ba7db0-3ea8-4e1d-87e4-781d460ddd0f.png)
