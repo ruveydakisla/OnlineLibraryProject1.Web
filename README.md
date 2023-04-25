@@ -20,7 +20,7 @@ Bu projede ASP.Net Mvc kullanılarak yapılmıştır npm migration,kullanılıp 
 - Kitaplarla ilgili işlemlere ulaşılır ve işlemler yapılır,Kitap Ekleme ,Silme ,Güncelleme
 - ![resim](https://user-images.githubusercontent.com/74324563/234374232-88481ebb-fab0-438c-a439-63dce7cd27b0.png)
 ### database kullanıcı Tablosu: 
-user uuid id şifreleme kullanılmıştır
+user uuid id şifreleme, şifre'de sha-256 kullanılmıştır
 ![resim](https://user-images.githubusercontent.com/74324563/234375337-f421930c-569e-4602-9efa-4b0dc8639d3d.png)
 - Kitap Tablosu
 - ![resim](https://user-images.githubusercontent.com/74324563/234375796-b31e14a7-1212-412c-821c-807718f16323.png)
