@@ -19,4 +19,4 @@
 - Kitaplarla ilgili işlemlere ulaşılır ve işlemler yapılır,Kitap Ekleme ,Silme ,Güncelleme
 - ![resim](https://user-images.githubusercontent.com/74324563/234374232-88481ebb-fab0-438c-a439-63dce7cd27b0.png)
 ### database kullanıcı Tablosu:
-![resim](https://user-images.githubusercontent.com/74324563/234375087-688f04d2-c2cb-475c-93fa-98584b28300a.png)
+![resim](https://user-images.githubusercontent.com/74324563/234375337-f421930c-569e-4602-9efa-4b0dc8639d3d.png)
