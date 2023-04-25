@@ -26,3 +26,6 @@ user uuid id şifreleme, şifre'de sha-256 kullanılmıştır
 - ![resim](https://user-images.githubusercontent.com/74324563/234375796-b31e14a7-1212-412c-821c-807718f16323.png)
 - Yazar Tablosu
 - ![resim](https://user-images.githubusercontent.com/74324563/234375904-f1ba7db0-3ea8-4e1d-87e4-781d460ddd0f.png)
+### Contributors
+Ömer Faruk Kumral : [email](thekumral.44@gmail.com)
+Ruveyda Kışla:[email](ruveydakisla34@gmail.com)
