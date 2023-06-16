@@ -37,23 +37,19 @@ namespace OnlineLibraryProject.Web.Controllers
             if (ModelState.IsValid)
             {
                 string hashedPassword = EncryptWithMD5(model.Password);
+
                 User user = _context.Users.SingleOrDefault(x => x.UserName.ToLower() == model.UserName.ToLower() && x.Password == hashedPassword);
 
                 if (user != null)
-                {
-
-
+                    { 
                     List<Claim> claims = new List<Claim>();
                     claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()));
                     claims.Add(new Claim(ClaimTypes.Name, user.NameSurname ?? string.Empty));
                     claims.Add(new Claim(ClaimTypes.Role, user.Role));
-                    claims.Add(new Claim("Username", user.UserName));
-
+                    claims.Add(new Claim("UserName", user.UserName));
                     ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
                     ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
-                    
                     AuthenticationProperties properties = new AuthenticationProperties()
                     {
 
@@ -72,10 +68,10 @@ namespace OnlineLibraryProject.Web.Controllers
                 }
             }
 
-            return View();
+            return View(model);
         }
-        
-    [AllowAnonymous]
+
+        [AllowAnonymous]
         public IActionResult Login() {
 
             ClaimsPrincipal claimUser = HttpContext.User;
