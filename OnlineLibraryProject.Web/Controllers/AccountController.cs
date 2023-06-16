@@ -58,7 +58,7 @@ namespace OnlineLibraryProject.Web.Controllers
                     {
 
                         AllowRefresh = true,
-                        IsPersistent = model.KeepLoggedIn
+                        
                     };
                     //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, properties);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,

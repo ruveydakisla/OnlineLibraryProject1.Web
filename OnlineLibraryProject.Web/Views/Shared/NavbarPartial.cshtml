@@ -14,7 +14,7 @@
                     if (User.IsInRole("admin"))
                     {
                         <li class="nav-item">
-                            <a class=" text-success nav-link " asp-area="" asp-controller="Admin" asp-action="Index">Administrator</a>
+                            <a class=" text-success nav-link " asp-area="" asp-controller="Admin" asp-action="Admin">Administrator</a>
                         </li>
                     }
 
@@ -26,15 +26,26 @@
                     <li class="nav-item">
                         <a class="nav-link text-success" asp-area="" asp-controller="Account" asp-action="Logout"><i class="text-success fa-solid fa-right-from-bracket me-2"></i>Logout</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" asp-area="" asp-controller="Yeni" asp-action="Yeni"><i class="text-success fa-solid fa-right-from-bracket me-2"></i>Deneme</a>
+                    </li>
                 }
                 else
                 {
-                    <li class="nav-item ms-auto ">
-                        <a class="nav-link text-success" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                    <li class="nav-item text-center">
+                        <a class=" nav-link " asp-controller="User" asp-action="Home">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" nav-link text-success" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                        <a class=" nav-link ">Contact</a>
                     </li>
+                    <li class="nav-item t ">
+                        <a class="nav-link " asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                    </li>
+                    <li class="nav-item text-center ">
+                        <a class=" nav-link " asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    </li>
+                   
+
                 }
             </ul>
         </nav><!-- .navbar -->

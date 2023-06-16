@@ -2,10 +2,12 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineLibraryProject.Web.Controllers
 {
+   
     public class UserController : Controller
     {
 
@@ -34,6 +36,10 @@ namespace OnlineLibraryProject.Web.Controllers
         {
             updateProduct.BookID= productId;
             return View(updateProduct);
+        }
+        public IActionResult Home()
+        {
+            return View();
         }
 
 

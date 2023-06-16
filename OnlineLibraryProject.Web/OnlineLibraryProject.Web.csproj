@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\AccountController - Kopyala.cs" />
+    <Compile Remove="Controllers\HomeController1.cs" />
+    <Compile Remove="Controllers\Sayfa.cs" />
+    <Compile Remove="Controllers\SayfaController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
